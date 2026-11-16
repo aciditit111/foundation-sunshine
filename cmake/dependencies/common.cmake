@@ -20,6 +20,13 @@ add_subdirectory("${CMAKE_SOURCE_DIR}/third-party/Simple-Web-Server")
 # common dependencies
 include("${CMAKE_MODULE_PATH}/dependencies/nlohmann_json.cmake")
 find_package(OpenSSL REQUIRED)
+if(WIN32 AND TARGET OpenSSL::Crypto)
+    # OpenSSL 4 (MSYS2 mingw-w64-ucrt-x86_64-openssl 4.1.0) seeds from BCryptGenRandom in its static libcrypto (rand_win), which needs bcrypt; the
+    # find module does not list it. Added once here to the imported target and to the variable that some targets link through, so no target has to
+    # carry it; linking bcrypt with OpenSSL 3 is harmless.
+    set_property(TARGET OpenSSL::Crypto APPEND PROPERTY INTERFACE_LINK_LIBRARIES bcrypt crypt32)
+    list(APPEND OPENSSL_LIBRARIES bcrypt)
+endif()
 find_package(PkgConfig REQUIRED)
 find_package(Threads REQUIRED)
 pkg_check_modules(CURL REQUIRED libcurl)
