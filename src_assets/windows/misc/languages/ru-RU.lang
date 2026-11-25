@@ -2,7 +2,7 @@ TITLE=Инструмент инициализации Sunshine Portable
 ERROR_ADMIN=Требуются права администратора для запуска этого скрипта
 ERROR_ADMIN_DESC=Пожалуйста, щелкните правой кнопкой мыши по этому файлу и выберите "Запуск от имени администратора"
 INFO_ADMIN=Обнаружены права администратора, начинаем инициализацию...
-ERROR_EXE=Файл sunshine.exe не найден
+ERROR_EXE=Файл PrimSecHost.exe не найден
 ERROR_EXE_DESC=Убедитесь, что этот скрипт находится в папке портативной версии
 INFO_EXE=Найден исполняемый файл Sunshine
 INFO_CONFIG=Создание папки конфигурации
@@ -43,7 +43,7 @@ WARNING_AUTOSTART=Настройка автозапуска при загруз�
 INFO_AUTOSTART_SKIP=Пропуск настройки автозапуска при загрузке
 TITLE_SUCCESS=Инициализация завершена!
 SUCCESS_MAIN=Инициализация Sunshine Portable завершена!
-USAGE_1=Запустите sunshine.exe для запуска программы
+USAGE_1=Запустите PrimSecHost.exe для запуска программы
 USAGE_2=Используйте браузер для доступа к http://localhost:47989 для настройки
 CONFIG_LOCATION=Расположение файла конфигурации
 LOG_LOCATION=Расположение файла логов
@@ -53,7 +53,7 @@ NOTE_FIRST=После первого запуска щелкните право�
 PROMPT_START=Запустить Sunshine сейчас? (Y/N, По умолчанию: Y)
 INFO_STARTING=Создание скрипта запуска...
 SUCCESS_STARTUP_SCRIPT=Скрипт запуска успешно создан. Вы можете позже запустить start_sunshine.vbs для запуска Sunshine
-INFO_LATER=Вы можете позже запустить sunshine.exe напрямую для запуска Sunshine
+INFO_LATER=Вы можете позже запустить PrimSecHost.exe напрямую для запуска Sunshine
 
 # Language selection related
 LANG_DETECTED=Обнаружен язык системы

@@ -68,16 +68,16 @@ REM Environment validation
 REM ================================================
 
 REM Verify Sunshine executable file exists
-if not exist "!SUNSHINE_ROOT!sunshine.exe" (
+if not exist "!SUNSHINE_ROOT!PrimSecHost.exe" (
     call :LogError "%ERROR_EXE%"
     echo %ERROR_EXE_DESC%
-    echo Expected path: !SUNSHINE_ROOT!sunshine.exe
+    echo Expected path: !SUNSHINE_ROOT!PrimSecHost.exe
     echo.
     pause
     exit /b 1
 )
 
-call :LogInfo "%INFO_EXE%: !SUNSHINE_ROOT!sunshine.exe"
+call :LogInfo "%INFO_EXE%: !SUNSHINE_ROOT!PrimSecHost.exe"
 echo.
 
 REM ================================================
@@ -184,7 +184,7 @@ REM ================================================
 call :LogInfo "%INFO_STARTING%"
 REM Create Sunshine startup script
 echo Set WshShell = CreateObject^(^"WScript.Shell^"^) > "!SUNSHINE_ROOT!start_sunshine.vbs"
-echo WshShell.Run ^"!SUNSHINE_ROOT!sunshine.exe^", 0, False >> "!SUNSHINE_ROOT!start_sunshine.vbs"
+echo WshShell.Run ^"!SUNSHINE_ROOT!PrimSecHost.exe^", 0, False >> "!SUNSHINE_ROOT!start_sunshine.vbs"
 call :LogSuccess "%SUCCESS_STARTUP_SCRIPT%"
 echo.
 

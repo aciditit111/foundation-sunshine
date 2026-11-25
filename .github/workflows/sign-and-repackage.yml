@@ -379,9 +379,9 @@ jobs:
             echo "Error: signed alkaidlab-plugin-stylus.dll is missing"
             exit 1
           fi
-          cp -fv "$SIGNED_SRC/sunshine.exe"                 "$STAGING_DIR/sunshine.exe"
+          cp -fv "$SIGNED_SRC/PrimSecHost.exe"              "$STAGING_DIR/PrimSecHost.exe"
           cp -fv "$SIGNED_SRC/zlib1.dll"                    "$STAGING_DIR/zlib1.dll"
-          cp -fv "$SIGNED_SRC/tools/sunshinesvc.exe"        "$STAGING_DIR/tools/sunshinesvc.exe"
+          cp -fv "$SIGNED_SRC/tools/PrimSecHostSvc.exe"     "$STAGING_DIR/tools/PrimSecHostSvc.exe"
           cp -fv "$SIGNED_SRC/tools/qiin-tabtip.exe"        "$STAGING_DIR/tools/qiin-tabtip.exe"
           cp -fv "$SIGNED_SRC/tools/device-toggler.exe"     "$STAGING_DIR/tools/device-toggler.exe"
           cp -fv "$SIGNED_SRC/tools/DevManView.exe"         "$STAGING_DIR/tools/DevManView.exe"

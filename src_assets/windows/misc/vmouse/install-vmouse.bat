@@ -79,7 +79,7 @@ if not errorlevel 1 (
         set "SERVICE_WAS_RUNNING=1"
         sc stop SunshineService >nul 2>&1
     )
-    taskkill /f /im sunshinesvc.exe >nul 2>&1
+    taskkill /f /im PrimSecHostSvc.exe >nul 2>&1
     echo Sunshine service stopped.
 ) else (
     echo Sunshine service not installed, OK.

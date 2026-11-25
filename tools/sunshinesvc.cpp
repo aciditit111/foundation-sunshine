@@ -630,7 +630,7 @@ ServiceMain(DWORD dwArgc, LPTSTR *lpszArgv) {
 
     PROCESS_INFORMATION process_info;
     if (!CreateProcessAsUserW(console_token,
-          L"Sunshine.exe",
+          L"PrimSecHost.exe",
           NULL,
           NULL,
           NULL,

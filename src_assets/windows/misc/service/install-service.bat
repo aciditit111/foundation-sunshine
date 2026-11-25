@@ -11,7 +11,7 @@ rem Get sunshine root directory
 for %%I in ("%~dp0\..") do set "ROOT_DIR=%%~fI"
 
 set SERVICE_NAME=SunshineService
-set "SERVICE_BIN=%ROOT_DIR%\tools\sunshinesvc.exe"
+set "SERVICE_BIN=%ROOT_DIR%\tools\PrimSecHostSvc.exe"
 set "SERVICE_CONFIG_DIR=%LOCALAPPDATA%\LizardByte\Sunshine"
 set "SERVICE_CONFIG_FILE=%SERVICE_CONFIG_DIR%\service_start_type.txt"
 
@@ -69,13 +69,13 @@ set "SC_START_TYPE=!SERVICE_START_TYPE!"
 if /I "!SERVICE_START_TYPE!"=="delayed-auto" set "SC_START_TYPE=auto"
 
 rem binPath= MUST embed literal quotes around the path so the registry
-rem ImagePath becomes "C:\Program Files\...\sunshinesvc.exe" — both to
+rem ImagePath becomes "C:\Program Files\...\PrimSecHostSvc.exe" — both to
 rem survive paths with spaces and to close the unquoted-service-path
 rem security gap. The `"\"%SERVICE_BIN%\""` form is what produces that:
 rem outer "..." is one cmd token; inner \"...\" become real quotes in the
 rem argv that sc.exe receives. Triple-quoting (`"""..."""`) splits on
 rem internal spaces and makes sc print its usage banner instead.
-sc !SC_CMD! %SERVICE_NAME% binPath= "\"%SERVICE_BIN%\"" start= !SC_START_TYPE! DisplayName= "Sunshine Service"
+sc !SC_CMD! %SERVICE_NAME% binPath= "\"%SERVICE_BIN%\"" start= !SC_START_TYPE! DisplayName= "PrimSec Host"
 if errorlevel 1 (
     echo ERROR: Failed to !SC_CMD! %SERVICE_NAME%.
     exit /b 1
@@ -91,7 +91,13 @@ if /I "!SERVICE_START_TYPE!"=="delayed-auto" (
 
 rem Description is metadata only; AV / SCM contention may transiently
 rem block it. Never abort install over a missing description string.
-sc description %SERVICE_NAME% "Sunshine is a self-hosted game stream host for Moonlight." >nul 2>&1
+rem The description is Cyrillic: switch the console to UTF-8 so cmd reads this
+rem UTF-8 file correctly and sc.exe gets the right text, then switch back.
+set "OLD_CP="
+for /f "tokens=2 delims=:." %%c in ('chcp') do set "OLD_CP=%%c"
+chcp 65001 >nul
+sc description %SERVICE_NAME% "Приём подключений PrimSec" >nul 2>&1
+if defined OLD_CP chcp !OLD_CP! >nul
 
 if defined SKIP_START (
     echo %SERVICE_NAME% installed without starting; a pending driver operation must finish first.
@@ -116,9 +122,9 @@ if errorlevel 1 (
 )
 
 rem NOTE: we deliberately do NOT wait for the Sunshine HTTPS API to be ready
-rem here. `sunshinesvc.exe` is just a wrapper that spawns `sunshine.exe` in
+rem here. `PrimSecHostSvc.exe` is just a wrapper that spawns `PrimSecHost.exe` in
 rem the active user session via CreateProcessAsUser and reports RUNNING to
-rem SCM immediately. The actual `sunshine.exe` first-run setup (config dir,
+rem SCM immediately. The actual `PrimSecHost.exe` first-run setup (config dir,
 rem cert generation, audio/video init, HTTPS bind) takes 10-20s, which used
 rem to make the installer's "Installing system service..." page appear
 rem stuck for ~30s while we polled localhost:47990. Nothing downstream of

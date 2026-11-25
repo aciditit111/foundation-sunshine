@@ -41,6 +41,8 @@ rem Force-kill the service binary FIRST so SCM can transition the service to
 rem STOPPED quickly. We deliberately avoid `net stop`, which blocks for up to
 rem 30 seconds waiting on the service's stop handler — that is the typical
 rem cause of "Inno uninstaller appears frozen".
+taskkill /f /im PrimSecHostSvc.exe >nul 2>&1
+rem Service binary of an install made before the PrimSec rename
 taskkill /f /im sunshinesvc.exe >nul 2>&1
 
 rem Issue a stop control as a courtesy (idempotent, returns quickly), then

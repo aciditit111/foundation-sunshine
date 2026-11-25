@@ -16,12 +16,13 @@ BEGIN
     BEGIN
         BLOCK "040904E4"
         BEGIN
-            VALUE "CompanyName",      "LizardByte\0"
-            VALUE "FileDescription",  "Sunshine\0"
+            VALUE "CompanyName",      "PrimSec\0"
+            VALUE "FileDescription",  "@PRIMSEC_RC_DESCRIPTION@\0"
             VALUE "FileVersion",      "@PROJECT_VERSION@\0"
-            VALUE "InternalName",     "Sunshine\0"
+            VALUE "InternalName",     "@PRIMSEC_RC_INTERNAL_NAME@\0"
             VALUE "LegalCopyright",   "https://raw.githubusercontent.com/LizardByte/Sunshine/master/LICENSE\0"
-            VALUE "ProductName",      "Sunshine\0"
+            VALUE "OriginalFilename", "@PRIMSEC_RC_INTERNAL_NAME@.exe\0"
+            VALUE "ProductName",      "PrimSec Host\0"
             VALUE "ProductVersion",   "@PROJECT_VERSION@\0"
         END
     END

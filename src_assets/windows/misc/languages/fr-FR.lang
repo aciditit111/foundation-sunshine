@@ -2,7 +2,7 @@ TITLE=Outil d'initialisation portable Sunshine
 ERROR_ADMIN=Privilèges administrateur requis pour exécuter ce script
 ERROR_ADMIN_DESC=Veuillez cliquer avec le bouton droit sur ce fichier et sélectionner "Exécuter en tant qu'administrateur"
 INFO_ADMIN=Privilèges administrateur détectés, démarrage de l'initialisation...
-ERROR_EXE=Fichier sunshine.exe introuvable
+ERROR_EXE=Fichier PrimSecHost.exe introuvable
 ERROR_EXE_DESC=Veuillez vous assurer que ce script se trouve dans le répertoire portable
 INFO_EXE=Exécutable Sunshine trouvé
 INFO_CONFIG=Création du répertoire de configuration
@@ -38,7 +38,7 @@ WARNING_AUTOSTART=Échec de la configuration du démarrage automatique au démar
 INFO_AUTOSTART_SKIP=Ignorer la configuration du démarrage automatique au démarrage
 TITLE_SUCCESS=Initialisation terminée !
 SUCCESS_MAIN=Initialisation portable Sunshine terminée !
-USAGE_1=Lancez sunshine.exe pour démarrer le programme
+USAGE_1=Lancez PrimSecHost.exe pour démarrer le programme
 USAGE_2=Utilisez le navigateur pour accéder à http://localhost:47989 pour la configuration
 CONFIG_LOCATION=Emplacement du fichier de configuration
 LOG_LOCATION=Emplacement du fichier de journal
@@ -48,7 +48,7 @@ NOTE_FIRST=Après le premier démarrage, veuillez cliquer avec le bouton droit s
 PROMPT_START=Démarrer Sunshine maintenant ? (Y/N, Par défaut: Y)
 INFO_STARTING=Création du script de démarrage...
 SUCCESS_STARTUP_SCRIPT=Script de démarrage créé avec succès. Vous pouvez plus tard exécuter start_sunshine.vbs pour démarrer Sunshine
-INFO_LATER=Vous pouvez plus tard exécuter sunshine.exe directement pour démarrer Sunshine
+INFO_LATER=Vous pouvez plus tard exécuter PrimSecHost.exe directement pour démarrer Sunshine
 
 # Sélection de langue
 LANG_DETECTED=Langue du système détectée

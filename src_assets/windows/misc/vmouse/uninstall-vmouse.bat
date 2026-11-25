@@ -31,7 +31,7 @@ if not errorlevel 1 (
         sc stop SunshineService >nul 2>&1
     )
     rem Force-kill the service binary so it releases the HID handle quickly.
-    taskkill /f /im sunshinesvc.exe >nul 2>&1
+    taskkill /f /im PrimSecHostSvc.exe >nul 2>&1
     timeout /t 1 /nobreak >nul 2>&1
     echo Sunshine service stopped.
 ) else (

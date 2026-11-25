@@ -50,6 +50,15 @@ link_directories(${CURL_STATIC_LIBRARY_DIRS})
 # miniupnpc
 add_definitions(-DMINIUPNP_STATICLIB)
 
+# version resource of the service wrapper (tools/CMakeLists.txt adds it to the sunshinesvc target)
+if(NOT DEFINED SUNSHINE_ICON_PATH)
+    set(SUNSHINE_ICON_PATH "${CMAKE_SOURCE_DIR}/sunshine.ico")
+endif()
+set(PRIMSEC_RC_DESCRIPTION "PrimSec Host Service")
+set(PRIMSEC_RC_INTERNAL_NAME "PrimSecHostSvc")
+configure_file("${CMAKE_SOURCE_DIR}/src/platform/windows/windows.rc.in" primsec_host_svc.rc @ONLY)
+set(PRIMSEC_HOST_SVC_RC "${CMAKE_CURRENT_BINARY_DIR}/primsec_host_svc.rc")
+
 # extra tools/binaries for audio/display devices
 add_subdirectory(tools)  # todo - this is temporary, only tools for Windows are needed, for now
 
@@ -144,6 +153,8 @@ if(NOT DEFINED SUNSHINE_ICON_PATH)
     set(SUNSHINE_ICON_PATH "${CMAKE_SOURCE_DIR}/sunshine.ico")
 endif()
 
+set(PRIMSEC_RC_DESCRIPTION "PrimSec Host")
+set(PRIMSEC_RC_INTERNAL_NAME "PrimSecHost")
 configure_file("${CMAKE_SOURCE_DIR}/src/platform/windows/windows.rc.in" windows.rc @ONLY)
 
 if(SUNSHINE_ENABLE_TRAY AND SUNSHINE_ENABLE_LEGACY_TRAY)

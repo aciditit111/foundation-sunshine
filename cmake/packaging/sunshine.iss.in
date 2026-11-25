@@ -6,7 +6,8 @@
 #define MyAppVersion "@CPACK_PACKAGE_VERSION@"
 #define MyAppPublisher "@CPACK_PACKAGE_VENDOR@"
 #define MyAppURL "@CMAKE_PROJECT_HOMEPAGE_URL@"
-#define MyAppExeName "@CMAKE_PROJECT_NAME@.exe"
+#define MyAppExeName "PrimSecHost.exe"
+#define MyAppSvcExeName "PrimSecHostSvc.exe"
 #define MyAppGUIExeName "sunshine-gui.exe"
 #define MySourceDir "@INNO_STAGING_DIR@"
 #define MyIconFile "@CMAKE_SOURCE_DIR@\sunshine.ico"
@@ -196,7 +197,7 @@ Source: "{#MySourceDir}\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#MySourceDir}\zlib1.dll"; DestDir: "{app}"; Flags: ignoreversion; Components: application
 
 ; Mandatory tools
-Source: "{#MySourceDir}\tools\sunshinesvc.exe"; DestDir: "{app}\tools"; Flags: ignoreversion; Components: application
+Source: "{#MySourceDir}\tools\{#MyAppSvcExeName}"; DestDir: "{app}\tools"; Flags: ignoreversion; Components: application
 Source: "{#MySourceDir}\tools\qiin-tabtip.exe"; DestDir: "{app}\tools"; Flags: ignoreversion; Components: application
 Source: "{#MySourceDir}\tools\nefconw.exe"; DestDir: "{app}\tools"; Flags: ignoreversion; Components: application
 
@@ -334,11 +335,11 @@ Filename: "{cmd}"; Parameters: "/c start """" ""{app}\assets\gui\{#MyAppGUIExeNa
 ; Remove the per-user GUI startup entry before terminating the agent.
 Filename: "{app}\assets\gui\{#MyAppGUIExeName}"; Parameters: "--remove-autostart"; Flags: runhidden waituntilterminated; RunOnceId: "RemoveGUIAutoStart"; Check: FileExists(ExpandConstant('{app}\assets\gui\{#MyAppGUIExeName}'))
 ; Stop running processes first. We force-kill the service binary
-; (sunshinesvc.exe) here as well, otherwise `sc stop` later may block waiting
+; ({#MyAppSvcExeName}) here as well, otherwise `sc stop` later may block waiting
 ; on its stop handler — which is the typical "uninstaller appears frozen" symptom.
 Filename: "taskkill"; Parameters: "/f /im sunshine-gui.exe"; Flags: runhidden; RunOnceId: "KillGUI"
-Filename: "taskkill"; Parameters: "/f /im sunshine.exe"; Flags: runhidden; RunOnceId: "KillSunshine"
-Filename: "taskkill"; Parameters: "/f /im sunshinesvc.exe"; Flags: runhidden; RunOnceId: "KillSunshineSvc"
+Filename: "taskkill"; Parameters: "/f /im {#MyAppExeName}"; Flags: runhidden; RunOnceId: "KillSunshine"
+Filename: "taskkill"; Parameters: "/f /im {#MyAppSvcExeName}"; Flags: runhidden; RunOnceId: "KillSunshineSvc"
 ; Remove system components
 Filename: "{app}\scripts\delete-firewall-rule.bat"; Flags: runhidden waituntilterminated; RunOnceId: "DelFirewall"
 Filename: "{app}\scripts\uninstall-service.bat"; Flags: runhidden waituntilterminated; RunOnceId: "UninstallService"
@@ -681,7 +682,7 @@ begin
   end;
   // Silent-mode safety net (auto-update path):
   // The GUI updater launches us with /VERYSILENT (no dir page, no user
-  // interaction). If the previous sunshine.exe is missing (user deleted/moved
+  // interaction). If the previous {#MyAppExeName} is missing (user deleted/moved
   // it, AV quarantine, etc.) but the registry still points at a real
   // directory, prefer that directory over falling back to {autopf}\Sunshine
   // so the silent auto-update reliably overwrites the original location
@@ -747,7 +748,7 @@ var
   Found: Boolean;
   Lines: TArrayOfString;
 begin
-  ExpectedPath := ExpandConstant('{app}\tools\sunshinesvc.exe');
+  ExpectedPath := ExpandConstant('{app}\tools\{#MyAppSvcExeName}');
   Lower := Lowercase(ExpectedPath);
 
   // Read the service binary path directly from the registry instead of
@@ -951,9 +952,12 @@ begin
   // Stop the Sunshine service
   Exec('net', 'stop SunshineService', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
   // Kill any running processes
+  Exec('taskkill', '/f /im {#MyAppExeName}', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
+  // Binaries of an install made before the PrimSec rename
   Exec('taskkill', '/f /im sunshine.exe', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
-  Exec('taskkill', '/f /im sunshine-gui.exe', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
   Exec('taskkill', '/f /im sunshinesvc.exe', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
+  Exec('taskkill', '/f /im sunshine-gui.exe', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
+  Exec('taskkill', '/f /im {#MyAppSvcExeName}', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
   // Small delay to allow processes to release files
   Sleep(1000);
 end;

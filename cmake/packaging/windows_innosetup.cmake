@@ -55,8 +55,8 @@ add_custom_target(innosetup
     
     # Strip debug symbols from executables to reduce installer size
     COMMAND ${CMAKE_COMMAND} -E echo "Stripping debug symbols from executables..."
-    COMMAND strip --strip-debug "${CMAKE_BINARY_DIR}/inno_staging/sunshine.exe"
-    COMMAND strip --strip-debug "${CMAKE_BINARY_DIR}/inno_staging/tools/sunshinesvc.exe"
+    COMMAND strip --strip-debug "${CMAKE_BINARY_DIR}/inno_staging/PrimSecHost.exe"
+    COMMAND strip --strip-debug "${CMAKE_BINARY_DIR}/inno_staging/tools/PrimSecHostSvc.exe"
     COMMAND strip --strip-debug "${CMAKE_BINARY_DIR}/inno_staging/tools/dxgi-info.exe"
     COMMAND strip --strip-debug "${CMAKE_BINARY_DIR}/inno_staging/tools/audio-info.exe"
     

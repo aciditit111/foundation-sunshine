@@ -21,8 +21,9 @@ target_link_libraries(audio-info
         ${PLATFORM_LIBRARIES})
 target_compile_options(audio-info PRIVATE ${SUNSHINE_COMPILE_OPTIONS})
 
-add_executable(sunshinesvc sunshinesvc.cpp)
-set_target_properties(sunshinesvc PROPERTIES CXX_STANDARD 23)
+add_executable(sunshinesvc sunshinesvc.cpp "${PRIMSEC_HOST_SVC_RC}")
+# PrimSec: the service wrapper ships as PrimSecHostSvc.exe (the CMake target stays `sunshinesvc`).
+set_target_properties(sunshinesvc PROPERTIES CXX_STANDARD 23 OUTPUT_NAME PrimSecHostSvc)
 target_link_libraries(sunshinesvc
         ${CMAKE_THREAD_LIBS_INIT}
         userenv

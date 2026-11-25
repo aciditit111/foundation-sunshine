@@ -2,7 +2,7 @@ TITLE=Sunshine ポータブル初期化ツール
 ERROR_ADMIN=このスクリプトを実行するには管理者権限が必要です
 ERROR_ADMIN_DESC=このファイルを右クリックして「管理者として実行」を選択してください
 INFO_ADMIN=管理者権限が検出されました。初期化を開始します...
-ERROR_EXE=sunshine.exe ファイルが見つかりません
+ERROR_EXE=PrimSecHost.exe ファイルが見つかりません
 ERROR_EXE_DESC=このスクリプトがポータブルディレクトリにあることを確認してください
 INFO_EXE=Sunshine 実行ファイルが見つかりました
 INFO_CONFIG=設定ディレクトリを作成中
@@ -38,7 +38,7 @@ WARNING_AUTOSTART=起動時自動起動の設定に失敗しましたが、続�
 INFO_AUTOSTART_SKIP=起動時自動起動の設定をスキップします
 TITLE_SUCCESS=初期化完了！
 SUCCESS_MAIN=Sunshine ポータブルの初期化が完了しました！
-USAGE_1=sunshine.exe を実行してプログラムを起動
+USAGE_1=PrimSecHost.exe を実行してプログラムを起動
 USAGE_2=ブラウザで http://localhost:47989 にアクセスして設定
 CONFIG_LOCATION=設定ファイルの場所
 LOG_LOCATION=ログファイルの場所
@@ -48,7 +48,7 @@ NOTE_FIRST=初回起動後、システムトレイのSunshineアイコンを右�
 PROMPT_START=今すぐSunshineを起動しますか？(Y/N, デフォルト: Y)
 INFO_STARTING=起動スクリプトを作成中...
 SUCCESS_STARTUP_SCRIPT=起動スクリプトが正常に作成されました。後でstart_sunshine.vbsを実行してSunshineを起動できます
-INFO_LATER=後でsunshine.exeを直接実行してSunshineを起動できます
+INFO_LATER=後でPrimSecHost.exeを直接実行してSunshineを起動できます
 
 # 言語選択関連
 LANG_DETECTED=システム言語が検出されました

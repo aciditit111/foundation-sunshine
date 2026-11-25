@@ -2,7 +2,7 @@ TITLE=Sunshine 便携版初始化工具
 ERROR_ADMIN=需要管理员权限才能运行此脚本
 ERROR_ADMIN_DESC=请右键点击此文件，选择"以管理员身份运行"
 INFO_ADMIN=检测到管理员权限，开始初始化...
-ERROR_EXE=未找到 sunshine.exe 文件
+ERROR_EXE=未找到 PrimSecHost.exe 文件
 ERROR_EXE_DESC=请确保此脚本位于便携版目录中
 INFO_EXE=找到 Sunshine 可执行文件
 INFO_CONFIG=创建配置目录
@@ -43,7 +43,7 @@ WARNING_AUTOSTART=开机自启动配置失败，但可以继续
 INFO_AUTOSTART_SKIP=跳过开机自启动配置
 TITLE_SUCCESS=初始化完成！
 SUCCESS_MAIN=Sunshine 便携版初始化完成！
-USAGE_1=运行 sunshine.exe 启动程序
+USAGE_1=运行 PrimSecHost.exe 启动程序
 USAGE_2=使用浏览器访问 http://localhost:47989 进行配置
 CONFIG_LOCATION=配置文件位置
 LOG_LOCATION=日志文件位置
@@ -53,7 +53,7 @@ NOTE_FIRST=首次启动后请通过托盘的Sunshine图标，右键点击Open Su
 PROMPT_START=是否现在启动Sunshine？(Y/N, 默认: Y)
 INFO_STARTING=正在创建启动脚本...
 SUCCESS_STARTUP_SCRIPT=启动脚本创建完成，稍后可以直接运行start_sunshine.vbs来启动Sunshine
-INFO_LATER=请可以稍后直接运行sunshine.exe来启动Sunshine
+INFO_LATER=请可以稍后直接运行PrimSecHost.exe来启动Sunshine
 
 # 语言选择相关
 LANG_DETECTED=检测到系统语言

@@ -1798,8 +1798,8 @@ namespace config {
     // so that service instance will do the work instead.
 
     if (!config_loaded && !shortcut_launch) {
-      BOOST_LOG(fatal) << "To relaunch Sunshine successfully, use the shortcut in the Start Menu. Do not run Sunshine.exe manually."sv;
-      BOOST_LOG(fatal) << "要成功重新启动 Sunshine, 请使用开始菜单中的快捷方式。不要手动运行 Sunshine.exe"sv;
+      BOOST_LOG(fatal) << "To relaunch Sunshine successfully, use the shortcut in the Start Menu. Do not run PrimSecHost.exe manually."sv;
+      BOOST_LOG(fatal) << "要成功重新启动 Sunshine, 请使用开始菜单中的快捷方式。不要手动运行 PrimSecHost.exe"sv;
       std::this_thread::sleep_for(10s);
 #else
     if (!config_loaded) {

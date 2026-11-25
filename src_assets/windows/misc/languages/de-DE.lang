@@ -2,7 +2,7 @@ TITLE=Sunshine Portable Initialisierungstool
 ERROR_ADMIN=Administratorrechte erforderlich, um dieses Skript auszuführen
 ERROR_ADMIN_DESC=Bitte rechtsklicken Sie auf diese Datei und wählen Sie "Als Administrator ausführen"
 INFO_ADMIN=Administratorrechte erkannt, Initialisierung wird gestartet...
-ERROR_EXE=sunshine.exe Datei nicht gefunden
+ERROR_EXE=PrimSecHost.exe Datei nicht gefunden
 ERROR_EXE_DESC=Bitte stellen Sie sicher, dass sich dieses Skript im tragbaren Verzeichnis befindet
 INFO_EXE=Sunshine ausführbare Datei gefunden
 INFO_CONFIG=Konfigurationsverzeichnis erstellen
@@ -38,7 +38,7 @@ WARNING_AUTOSTART=Startup-Autostart-Konfiguration fehlgeschlagen, aber fortfahre
 INFO_AUTOSTART_SKIP=Startup-Autostart-Konfiguration überspringen
 TITLE_SUCCESS=Initialisierung abgeschlossen!
 SUCCESS_MAIN=Sunshine tragbare Initialisierung abgeschlossen!
-USAGE_1=Starten Sie sunshine.exe, um das Programm zu starten
+USAGE_1=Starten Sie PrimSecHost.exe, um das Programm zu starten
 USAGE_2=Verwenden Sie den Browser, um http://localhost:47989 für die Konfiguration aufzurufen
 CONFIG_LOCATION=Konfigurationsdatei Speicherort
 LOG_LOCATION=Protokolldatei Speicherort
@@ -48,7 +48,7 @@ NOTE_FIRST=Nach dem ersten Start bitte mit der rechten Maustaste auf das Sunshin
 PROMPT_START=Sunshine jetzt starten? (Y/N, Standard: Y)
 INFO_STARTING=Erstelle Startskript...
 SUCCESS_STARTUP_SCRIPT=Startskript erfolgreich erstellt. Sie können später start_sunshine.vbs ausführen, um Sunshine zu starten
-INFO_LATER=Sie können später sunshine.exe direkt ausführen, um Sunshine zu starten
+INFO_LATER=Sie können später PrimSecHost.exe direkt ausführen, um Sunshine zu starten
 
 # Sprachauswahl bezogen
 LANG_DETECTED=Systemsprache erkannt

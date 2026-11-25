@@ -1,5 +1,7 @@
 # windows specific target definitions
 set_target_properties(sunshine PROPERTIES LINK_SEARCH_START_STATIC 1)
+# PrimSec: the host binary ships as PrimSecHost.exe (the CMake target stays `sunshine`).
+set_target_properties(sunshine PROPERTIES OUTPUT_NAME PrimSecHost)
 set(CMAKE_FIND_LIBRARY_SUFFIXES ".dll")
 find_library(ZLIB ZLIB1)
 list(APPEND SUNSHINE_EXTERNAL_LIBRARIES
