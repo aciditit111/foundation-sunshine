@@ -127,6 +127,7 @@ namespace nvenc {
 
     struct {
       uint64_t last_encoded_frame_index = 0;
+      uint64_t last_idr_frame_index = 0;  ///< Frame index of the most recent IDR produced by the encoder (0 = none yet).
       bool rfi_needs_confirmation = false;
       std::pair<uint64_t, uint64_t> last_rfi_range;
       logging::min_max_avg_periodic_logger<double> frame_size_logger = { debug, "NvEnc: encoded frame sizes in kB", "" };

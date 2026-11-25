@@ -948,6 +948,7 @@ namespace nvenc {
     encoder_state.last_encoded_frame_index = frame_index;
 
     if (encoded_frame.idr) {
+      encoder_state.last_idr_frame_index = encoded_frame.frame_index;
       BOOST_LOG(debug) << "NvEnc: idr frame " << encoded_frame.frame_index;
     }
 
@@ -962,7 +963,20 @@ namespace nvenc {
 
   bool
   nvenc_base::invalidate_ref_frames(uint64_t first_frame, uint64_t last_frame) {
-    if (!encoder || !encoder_params.rfi) return false;
+    if (!encoder) return false;
+
+    if (!encoder_params.rfi) {
+      // Without RFI support every invalidation request falls back to an IDR. The client
+      // keeps sending requests for frames that were already in flight when its first
+      // request left, and each of them used to force one more IDR. Frames encoded before
+      // the most recent IDR are already superseded by it, so such requests need no new IDR.
+      if (encoder_state.last_idr_frame_index != 0 && last_frame < encoder_state.last_idr_frame_index) {
+        BOOST_LOG(debug) << "NvEnc: rfi request " << first_frame << "-" << last_frame
+                         << " already covered by idr frame " << encoder_state.last_idr_frame_index;
+        return true;
+      }
+      return false;
+    }
 
     if (first_frame >= encoder_state.last_rfi_range.first &&
         last_frame <= encoder_state.last_rfi_range.second) {
