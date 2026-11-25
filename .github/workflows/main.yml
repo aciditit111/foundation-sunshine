@@ -300,7 +300,7 @@ jobs:
         # produced valid objects). PR runs restore master's entry, so they
         # don't need to save, and skipping their saves keeps the shared
         # cache quota flat.
-        if: always() && github.ref == 'refs/heads/master'
+        if: always() && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/primsec')
         id: ccache_save
         continue-on-error: true
         uses: actions/cache/save@v6
@@ -322,7 +322,7 @@ jobs:
         # Skipped unless the save step actually succeeded (outcome keeps the
         # real result under continue-on-error; the save subaction sets no
         # outputs, so conclusion can't tell success from failure).
-        if: always() && github.ref == 'refs/heads/master' && steps.ccache_save.outcome == 'success'
+        if: always() && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/primsec') && steps.ccache_save.outcome == 'success'
         env:
           GH_TOKEN: ${{ github.token }}
         shell: pwsh
